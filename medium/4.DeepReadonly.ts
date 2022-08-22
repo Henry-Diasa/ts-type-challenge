@@ -16,6 +16,8 @@ type Expected = {
 
 type Todo5 = DeepReadonly<X>; // should be same as `Expected`
 
-type DeepReadonly<T> = {
-  readonly [K in keyof T]: T[K] extends Object ? DeepReadonly<T[K]> : T[K];
-};
+type DeepReadonly<T> = T extends any // 这里为了触发ts计算 这样Todo5就可以全部展示出来
+  ? {
+      readonly [K in keyof T]: T[K] extends Object ? DeepReadonly<T[K]> : T[K];
+    }
+  : never;
