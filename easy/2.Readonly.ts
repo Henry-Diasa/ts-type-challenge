@@ -15,6 +15,13 @@ type MyReadonly<T> = {
   readonly [K in keyof T]: T[K];
 };
 // 延伸 所有的Key设置为可选
+// 可以通过 - 来取消限制 例如
+/**
+ * 
+ type Optional<T> = {
+  [K in keyof T]-?: T[K];
+  };
+ */
 type Optional<T> = {
   [K in keyof T]?: T[K];
 };

@@ -4,7 +4,7 @@ type C = MyExclude<"a" | "b", "a" | "c">; // 'b'
 
 type MyExclude<T, U> = T extends U ? never : T;
 
-// TS 对联合类型的执行是分配律的
+// TS 对联合类型的执行是分配律的 联合类型会进行分发
 
 /**
  *
