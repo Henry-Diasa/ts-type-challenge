@@ -13,3 +13,6 @@ type Merge1<T> = {
 type PartialByKeys<T, K extends PropertyKey = keyof T> = Merge1<
   Partial<T> & Omit<T, K>
 >;
+
+// 利用 Partial & Omit 来合并对象。
+// 因为 Omit<T, K> 中 K 有来自于 keyof T 的限制，而测试用例又包含 unknown 这种不存在的 Key 值，此时可以用 extends PropertyKey 处理此场景。
